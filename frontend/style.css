@@ -1,0 +1,118 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Inconsolata", monospace;
+}
+
+header {
+  background-color: #212121;
+  text-align: center;
+  height: 10vh;
+  padding: 1rem;
+}
+
+h1 {
+  font-family: "Major Mono Display", monospace;
+  color: #14ffec;
+  font-size: 3em;
+}
+
+main {
+  background-color: #212121;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5rem;
+  height: 90vh;
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+  width: 600px;
+  background-color: #323232;
+  border-radius: 0.5rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  grid-template-rows: repeat(var(--grid-rows), 1fr);
+  width: 575px;
+  height: 575px;
+  background-color: white;
+}
+
+.grid-item {
+  border: 1px solid black;
+  text-align: center;
+  user-select: none;
+}
+
+.options-panel {
+  background-color: #323232;
+  display: flex;
+  flex-direction: row;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 1rem;
+  width: fit-content;
+  justify-content: space-evenly;
+}
+
+.result-paragraph {
+  color: white;
+  font-size: 2rem;
+}
+
+button {
+  padding: 20px 25px;
+  background-color: transparent;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.skeleton_ded {
+  transform: translateX(100px) scale(0);
+  opacity: 0;
+  transition: opacity 1000ms, transform 2000ms;
+}
+
+button:hover {
+  background: #03e9f4;
+  color: #050801;
+  box-shadow: 0 0 5px #14ffec, 0 0 25px #14ffec, 0 0 50px #14ffec,
+    0 0 200px #14ffec;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+}
+
+.active {
+  background: #03e9f4;
+  color: #050801;
+}
