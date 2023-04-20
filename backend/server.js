@@ -9,18 +9,21 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/classify", async (req, res) => {
-  const { frame } = req.body;
+  const { frame, limit } = req.body;
 
-  await fs.writeFile("../python/digit.json", JSON.stringify(frame), (err) => {
+  await fs.writeFile("../python/sample.json", JSON.stringify(frame), (err) => {
     if (err) console.log(err);
+    res.status(503);
+    return;
   });
 
-  console.log("Spawning python classify process");
-  const classify = cp.spawn("python", ["../python/classify.py"]);
+  console.log("Spawning python main.py process");
+  const classify = cp.spawn("python", ["../python/main.py", limit || 50]);
 
   classify.stdout.on("data", (data) => {
-    const digit = data.toString().trim();
-    res.status(201).json({ digit });
+    console.log(data.toString());
+    const line = data.toString().trim();
+    res.status(201).json({ digit: line });
     return;
   });
 

@@ -3,6 +3,7 @@ const container = document.getElementById("gridContainer");
 const clearBtn = document.getElementById("clearBtn");
 const computeBtn = document.getElementById("computeBtn");
 const resultText = document.getElementById("result");
+const form = document.getElementById("form");
 
 // default values
 let gridSize = 28;
@@ -57,11 +58,11 @@ function sketchFunctionality() {
   });
 }
 
-async function computeData(gridBoxes) {
+async function computeData(gridBoxes, limit) {
   const skeleton = document.querySelector(".skeleton");
   skeleton.classList.remove("skeleton_ded");
-  resultText.textContent = "Loading...";
   let frame = {};
+  frame[`label`] = ["?"];
 
   // Generate pixels array
   let i = 1;
@@ -77,24 +78,36 @@ async function computeData(gridBoxes) {
     j += 1;
   });
 
-  const payload = { frame };
+  const payload = { frame, limit };
 
-  const response = await fetch("http://localhost:3000/classify", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  });
+  try {
+    resultText.textContent = "Loading...";
+    const response = await fetch("http://localhost:3000/classify", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
-  const data = await response.json();
-  const digit = data.digit;
-  console.log(digit);
-  resultText.textContent = digit;
-  skeleton.classList.add("skeleton_ded");
+    const data = await response.json();
+    const digit = data.digit;
+    resultText.textContent = digit;
+    skeleton.classList.add("skeleton_ded");
+  } catch (err) {
+    resultText.textContent = "ERROR";
+  }
 }
 
-computeBtn.addEventListener("click", async () => {
+// computeBtn.addEventListener("click", async () => {
+//   const gridBoxes = document.querySelectorAll(".grid-item");
+//   await computeData(gridBoxes);
+// });
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
   const gridBoxes = document.querySelectorAll(".grid-item");
-  await computeData(gridBoxes);
+  const limit = e.target.limitInput.value;
+
+  await computeData(gridBoxes, limit);
 });

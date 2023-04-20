@@ -18,13 +18,21 @@
           <div class="grid-container" id="gridContainer"></div>
         </div>
         <div class="options-panel">
-          <button id="computeBtn">Compute Data</button>
-          <button id="clearBtn">Clear</button>
+          <form id="form">
+            <input type="number" min="2" max="1000" id="limitInput" required />
+            <button id="computeBtn" type="submit">Compute Data</button>
+            <button id="clearBtn" type="button">Clear</button>
+          </form>
         </div>
       </div>
       <div class="result-panel">
         <p class="result-paragraph" id="result"></p>
-        <img src="placeholder.jpg" alt="placeholder" class="skeleton" width="500px" />
+        <img
+          src="placeholder.jpg"
+          alt="placeholder"
+          class="skeleton"
+          width="500px"
+        />
       </div>
     </main>
     <script src="app.js"></script>
