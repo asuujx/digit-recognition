@@ -4,6 +4,7 @@
 
 body {
   margin: 0;
+  padding: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -20,7 +21,7 @@ header {
 h1 {
   font-family: "Major Mono Display", monospace;
   color: #14ffec;
-  font-size: 3em;
+  font-size: 2.5em;
 }
 
 main {
@@ -28,7 +29,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  padding: 5rem;
+  padding: 2.5rem;
   height: 90vh;
 }
 
@@ -96,12 +97,6 @@ button {
   overflow: hidden;
   transition: 0.5s;
   cursor: pointer;
-}
-
-.skeleton_ded {
-  transform: translateX(100px) scale(0);
-  opacity: 0;
-  transition: opacity 1000ms, transform 2000ms;
 }
 
 button:hover {

@@ -59,8 +59,6 @@ function sketchFunctionality() {
 }
 
 async function computeData(gridBoxes, limit) {
-  const skeleton = document.querySelector(".skeleton");
-  skeleton.classList.remove("skeleton_ded");
   let frame = {};
   frame[`label`] = ["?"];
 
@@ -93,7 +91,6 @@ async function computeData(gridBoxes, limit) {
     const data = await response.json();
     const digit = data.digit;
     resultText.textContent = digit;
-    skeleton.classList.add("skeleton_ded");
   } catch (err) {
     resultText.textContent = "ERROR";
   }
