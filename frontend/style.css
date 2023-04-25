@@ -2,6 +2,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Major+Mono+Display&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap");
 
+:root {
+  --grid-cols: 1;
+  --grid-rows: 1;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -28,8 +33,8 @@ main {
   background-color: #212121;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  padding: 2.5rem;
+  /* justify-content: space-evenly; */
+  padding: 2.5rem 10rem;
   height: 90vh;
 }
 
@@ -38,12 +43,9 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  flex: 1;
 }
 
-:root {
-  --grid-cols: 1;
-  --grid-rows: 1;
-}
 
 .grid-wrapper {
   display: flex;
@@ -81,9 +83,35 @@ main {
   justify-content: space-evenly;
 }
 
+.result-panel {
+  flex: 1;
+}
+
 .result-paragraph {
   color: white;
   font-size: 2rem;
+}
+
+input[type=number] {
+  text-align: center;
+  padding: 20px 25px;
+  width: 3rem;
+  background: transparent;
+  color: white;
+  font-weight: bold;
+  border: 2px solid white;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  appearance: none;
+  -moz-appearance: textfield;
+  transition: 0.5s;
+}
+
+input[type=number]:focus {
+  box-shadow: 0 0 5px #14ffec, 0 0 25px #14ffec, 0 0 50px #14ffec,
+    0 0 200px #14ffec;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+  outline: none;
 }
 
 button {
