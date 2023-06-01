@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  python:
+    build: python
+    volumes:
+      - ./shared:/shared
+  node:
+    build: backend
+    volumes:
+      - ./shared:/shared
+    ports:
+      - 3000:80

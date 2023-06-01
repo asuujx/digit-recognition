@@ -1,6 +1,8 @@
+from pandas import DataFrame
+
 class ProcessData:
     @staticmethod
-    def normalize(frame, X):
+    def normalize(frame: DataFrame, X: list):
         frame_c = frame.copy()
         n = len(frame_c)
         max_val = frame_c.drop(columns="label").max().max()
